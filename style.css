@@ -10,54 +10,93 @@ html, body {
 
 body {
 	align-items: center;
-  background-color: #FFF;
+  background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
 	display: flex;
 	font-family: 'Titillium Web', Verdana, Helvetica, sans-serif;
 	flex-direction: column;
 	justify-content: center;
 	overflow: hidden;
+	position: relative;
 }
 
-div.container {
-	align-items: center;
-	align-self: center;
-	background: url('https://ak6.picdn.net/shutterstock/videos/26609153/thumb/1.jpg') center center;
-	border-radius: 100%;
-	display: flex;
-	flex-direction: column;
-	min-height: 800px;
-	justify-content: center;
-	width: 800px;
+/* Animated Background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  opacity: 0.05;
 }
 
-h1 {
-  color: #fff;
-  font-family: 'Titillium Web', Verdana, Helvetica, sans-serif;
-  font-size: 52px;
-  font-weight: 900;
-  line-height: 46px;
-  margin: 0 0 60px 0;
-  text-align: center;
-  text-shadow: 0px 2px 4px rgba(34,62,66,.75);
-  width: 50%;
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-a.btn {
-	background: linear-gradient(45deg, rgba(255,184,115,0.65) 0%,rgba(255,124,189,0.65) 50%,rgba(108,0,153,0.65) 100%);
-	border-radius: 2px;
-	box-shadow: 0px 2px 4px rgba(34,62,66,.25);
-  color: #fff;
-  font-size: 18px;
-  letter-spacing: 1px;
-  padding: 16px 32px;
-  text-decoration: none;
-  text-transform: uppercase;
-  -webkit-transition: box-shadow 1s ease;
-	transition: box-shadow 1s ease;
+/* Animation Keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-a.btn:hover {
-	box-shadow: 0px 4px 4px rgba(34,62,66,.5);
-	-webkit-transition: box-shadow 1s ease;
-	transition: box-shadow 1s ease;
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) translateY(30px);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
 }

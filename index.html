@@ -6,16 +6,16 @@
   <meta name=viewport content="width=800">
   <meta name="generator" content="HTML Tidy for Linux/x86 (vers 11 February 2007), see www.w3.org">
   <style type="text/css">
-    /* Color scheme stolen from Sergey Karayev */
+    /* Color scheme inspired by PackUV */
 
     a {
-      color: #1772d0;
+      color: #667eea;
       text-decoration: none;
     }
 
     a:focus,
     a:hover {
-      color: #f09220;
+      color: #f5576c;
       text-decoration: none;
     }
 
@@ -54,35 +54,110 @@
       font-weight: 500
     }
 
-    .one {
-      width: 160px;
-      height: 160px;
+    span.highlight {
+      background-color: #ffffd0;
+    }
+
+    /* Section backgrounds matching PackUV style */
+    table[width="100%"][align="center"] {
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(102, 126, 234, 0.08);
+      animation: fadeInUp 0.8s ease backwards;
+      transition: all 0.3s ease;
+    }
+
+    table[width="100%"][align="center"]:hover {
+      box-shadow: 0 8px 24px rgba(102, 126, 234, 0.15);
+      transform: translateY(-2px);
+    }
+
+    heading {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: fadeInDown 0.8s ease;
+    }
+
+    /* Stagger animations for sections */
+    table:nth-child(1) { animation-delay: 0s; }
+    table:nth-child(2) { animation-delay: 0.1s; }
+    table:nth-child(3) { animation-delay: 0.2s; }
+    table:nth-child(4) { animation-delay: 0.3s; }
+    table:nth-child(5) { animation-delay: 0.4s; }
+    table:nth-child(6) { animation-delay: 0.5s; }
+
+    /* Profile image animation */
+    img {
+      transition: all 0.3s ease;
+    }
+
+    img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+    }
+
+    /* Name animation */
+    name {
+      animation: bounceIn 1s ease;
+      display: inline-block;
+    }
+
+    /* Link hover animations */
+    a {
+      transition: all 0.3s ease;
       position: relative;
     }
 
-    .two {
-      width: 160px;
-      height: 160px;
+    a::after {
+      content: '';
       position: absolute;
-      transition: opacity .2s ease-in-out;
-      -moz-transition: opacity .2s ease-in-out;
-      -webkit-transition: opacity .2s ease-in-out;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #667eea, #f5576c);
+      transition: width 0.3s ease;
     }
 
-    .fade {
-      transition: opacity .2s ease-in-out;
-      -moz-transition: opacity .2s ease-in-out;
-      -webkit-transition: opacity .2s ease-in-out;
+    a:hover::after {
+      width: 100%;
     }
 
-    span.highlight {
-      background-color: #ffffd0;
+    /* Paper title hover effect */
+    papertitle {
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    papertitle:hover {
+      transform: translateX(5px);
+    }
+
+    /* Main content area with subtle gradient overlay */
+    body > table {
+      position: relative;
+    }
+
+    body > table::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.08) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.08) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: -1;
     }
   </style>
   <link rel="icon" type="image/png" href="images/brown_logo.png">
   <title>Aashish Rai</title>
   <meta http-equiv="Content-Type" content="text/html; charset=us-ascii">
-  <!-- <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'> -->
   <link href="https://fonts.googleapis.com/css?family=Titillium+Web:400,600,400italic,600italic,300,300italic" rel="stylesheet" type="text/css">
 </head>
 
@@ -102,7 +177,6 @@
 				I'm a Computer Science Ph.D. student at <a href="https://www.brown.edu/">Brown University</a>, supervised by <a href="https://cs.brown.edu/people/ssrinath">Srinath Sridhar</a> at the
 				<a href="https://ivl.cs.brown.edu">Interactive 3D Vision & Learning Lab (IVL)</a>. 
 
-<!-- 				I'm driven by the vision of building AI systems that understand the world like humans do. -->
 				My research focuses on efficient methods for 3D/4D novel view synthesis and reconstruction. I'm also interested in generative 4D world modeling. 
 				I hope my work can contribute to building AI systems that can effectively understand and generate the physical world around us.
 
@@ -131,7 +205,6 @@
 
               <p align=center>
                 <a href="aashish@brown.edu">Email</a> &nbsp/&nbsp
-                <!-- <a href="data/myCV.pdf">CV</a> &nbsp/&nbsp -->
                 <a href="https://scholar.google.com/citations?hl=en&user=RxaDP08AAAAJ&view_op=list_works&sortby=pubdate">Google Scholar</a> &nbsp/&nbsp
                 <a href="https://github.com/aashishrai3799">GitHub</a> &nbsp/&nbsp
                 <a href="https://www.linkedin.com/in/aashishrai3799">LinkedIn</a> &nbsp/&nbsp
@@ -164,7 +237,6 @@
                 [Feb 2025] One paper <a href="https://aashishrai3799.github.io/uvgs">[ UVGS ]</a> accepted at CVPR 2025. See you in Nashville TN! <br>
 		[Oct 2024] One paper <a href="https://aashishrai3799.github.io/EgoSonics">[ EgoSonics ]</a> accepted at WACV 2025. See you in Arizona! <br>
                 [May 2024] Started working at <a href="https://about.meta.com/realitylabs">Meta Reality Labs</a> in Burlingame, CA. <br>
-                <!-- <font color="#FF0000"><strong>[May 2023]</strong></font> Started Ph.D. in Computer Science at <a href="https://www.brown.edu/">Brown University</a> <br> -->
 		[Oct 2023] One paper <a href="https://aashishrai3799.github.io/Towards-Realistic-Generative-3D-Face-Models">[ Towards Realistic Generative 3D Face Models ]</a> accepted at WACV 2024. <br>
                 [Aug 2023] Started Ph.D. in Computer Science at <a href="https://www.brown.edu/">Brown University.</a> <br>
                 [May 2023] Our work <a href="https://aashishrai3799.github.io/Towards-Realistic-Generative-3D-Face-Models">[ Towards Realistic Generative 3D Face Models ]</a> is 
@@ -299,15 +371,12 @@
             <td width="25%"><img src="images/GaussUV.jpeg" width="200" height="120" style="border-style: none">
               <td width="75%" valign="top">
                 <p>
-                  <!-- <a href="https://ieeexplore.ieee.org/document/9680017"> -->
-                    <papertitle>PackUV: Packed Gaussian UV Maps for 4D Volumetric Video</papertitle>
-                  <!-- </a> -->
+                  <papertitle>PackUV: Packed Gaussian UV Maps for 4D Volumetric Video</papertitle>
                   <br>
                   <strong>Aashish Rai</strong>, Angela Xing, Anushka Agarwal, Xiaoyan Cong, Zekun Li, Tao Lu, <a href="https://cs.brown.edu/people/ssrinath">Srinath Sridhar</a>
                   <br>
                   <em> 2025 </em> </em>
                   <br>
-                  <!-- <a href="https://aashishrai3799.github.io/uvgs">project page</a> | <a href="https://arxiv.org/abs/2502.01846">pdf</a> -->
                 </p>
 
               </td>
@@ -320,17 +389,17 @@
             <td width="25%"><img src="images/uvgs.jpg" width="200" height="90" style="border-style: none">
               <td width="75%" valign="top">
                 <p>
-                  <!-- <a href="https://ieeexplore.ieee.org/document/9680017"> -->
-                    <papertitle>UVGS: Reimagining Unstructured 3D Gaussian Splatting using UV Mapping</papertitle>
-                  <!-- </a> -->
+                  <a href="https://ivl.cs.brown.edu/uvgs">
+                  <papertitle>UVGS: Reimagining Unstructured 3D Gaussian Splatting using UV Mapping</papertitle>
+                  </a>
                   <br>
                   <strong>Aashish Rai</strong>, <a href="https://wdilin.github.io">Dilin Wang</a>, <a href="https://scholar.google.co.in/citations?hl=en&user=A7MCx_kAAAAJ&view_op=list_works">Mihir Jain</a>, 
-			<a href="https://nsarafianos.github.io">Nikolaos Sarafianos</a>, <a href="https://arthurchen0518.github.io">Arthur Chen</a>, <a href="https://cs.brown.edu/people/ssrinath">Srinath Sridhar</a>, 
-			<a href="https://aayushp.github.io/">Aayush Prakash</a>
+                  <a href="https://nsarafianos.github.io">Nikolaos Sarafianos</a>, <a href="https://arthurchen0518.github.io">Arthur Chen</a>, <a href="https://cs.brown.edu/people/ssrinath">Srinath Sridhar</a>, 
+                  <a href="https://aayushp.github.io/">Aayush Prakash</a>
                   <br>
                   <em> CVPR 2025 </em> </em>
                   <br>
-                  <a href="https://aashishrai3799.github.io/uvgs">project page</a> | <a href="https://arxiv.org/abs/2502.01846">pdf</a>
+                  <a href="https://ivl.cs.brown.edu/uvgs">project page</a> | <a href="https://arxiv.org/abs/2502.01846">pdf</a>
                 </p>
 
               </td>
@@ -342,15 +411,15 @@
             <td width="25%"><img src="images/egosonics.jpg" width="200" height="140" style="border-style: none">
               <td width="75%" valign="top">
                 <p>
-                  <!-- <a href="https://ieeexplore.ieee.org/document/9680017"> -->
-                    <papertitle>EgoSonics: Generating Synchronized Audio for Silent Egocentric Videos</papertitle>
-                  <!-- </a> -->
+                  <a href="https://ivl.cs.brown.edu/research/egosonics">
+                  <papertitle>EgoSonics: Generating Synchronized Audio for Silent Egocentric Videos</papertitle>
+                  </a>
                   <br>
                   <strong>Aashish Rai</strong>, <a href="https://cs.brown.edu/people/ssrinath">Srinath Sridhar</a>
                   <br>
                   <em> Winter Conference on Applications of Computer Vision (WACV), 2025 </em> </em>
                   <br>
-                  <a href="https://aashishrai3799.github.io/EgoSonics">project page</a> | <a href="https://arxiv.org/pdf/2407.20592">pdf</a>
+                  <a href="https://ivl.cs.brown.edu/research/egosonics">project page</a> | <a href="https://arxiv.org/pdf/2407.20592">pdf</a>
                 </p>
 
               </td>
@@ -362,16 +431,16 @@
             <td width="25%"><img src="images/face_gen.png" width="200" height="140" style="border-style: none">
               <td width="75%" valign="top">
                 <p>
-                  <!-- <a href="https://ieeexplore.ieee.org/document/9680017"> -->
-                    <papertitle>Towards Realistic Generative 3D Face Models</papertitle>
-                  <!-- </a> -->
+                  <a href="https://aashishrai3799.github.io/Towards-Realistic-Generative-3D-Face-Models">
+                  <papertitle>Towards Realistic Generative 3D Face Models</papertitle>
+                  </a>
                   <br>
                   <strong>Aashish Rai</strong>, <a href="https://hireshgupta1997.github.io/">Hiresh Gupta</a>, Ayush Pandey, Francisco Vicente Carrasco, Shingo Jason Takagi</a>, 
 	  			Amaury Aubel, Daeil Kim, <a href="https://aayushp.github.io/">Aayush Prakash</a>, <a href="https://www.cs.cmu.edu/~ftorre/">Fernando de la Torre</a>
                   <br>
                   <em> Winter Conference on Applications of Computer Vision (WACV), 2024 </em>
                   <br>
-                  <a href="https://aashishrai3799.github.io/Towards-Realistic-Generative-3D-Face-Models/">project page</a> | <a href="https://arxiv.org/pdf/2304.12483">pdf</a>
+                  <a href="https://aashishrai3799.github.io/Towards-Realistic-Generative-3D-Face-Models">project page</a> | <a href="https://arxiv.org/pdf/2304.12483">pdf</a>
                 </p>
 
               </td>
@@ -383,9 +452,9 @@
             <td width="25%"><img src="images/3dfacecam.gif" width="200" height="140" style="border-style: none">
               <td width="75%" valign="top">
                 <p>
-                  <!-- <a href="https://ieeexplore.ieee.org/document/9680017"> -->
+                  <a href="https://aashishrai3799.github.io/3DFaceCAM">
                     <papertitle>Controllable 3D Generative Adversarial Face Model via Disentangling Shape and Appearance</papertitle>
-                  <!-- </a> -->
+                  </a>
                   <br>
                   <a href="https://ulteraa.github.io/Fariborz.github.io/">Fariborz Taherkhani</a>, <strong>Aashish Rai</strong>, <a href="https://zerg-overmind.github.io/">Quankai Gao</a>, 
 			<a href="hhttps://shaunak99.github.io/profilev2/">Shaunak Srivastava</a>, Xuanbai Chen, <a href="https://www.cs.cmu.edu/~ftorre/">Fernando de la Torre</a>, Steven Song, 
@@ -469,30 +538,7 @@
         </tr> 
       </table>
 
-
-        
-        
-
-        
-        
-        <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-          <tr>
-            <td>
-              <br>
-              <p align="right">
-                <font size="2">
-                    (website template modified from <a href="https://github.com/jonbarron/jonbarron_website"> repo </a>)
-                  </font>
-              </p>
-              
-              <p align="center">
-              <!--<script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/739523/t/3"></script> -->
-              </p>
-              
-            </td>
-          </tr>
-        </table>
-        </td>
+      </td>
     </tr>
   </table>
 
