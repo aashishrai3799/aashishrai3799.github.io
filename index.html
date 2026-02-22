@@ -93,6 +93,7 @@
     /* Profile image animation */
     img {
       transition: all 0.3s ease;
+      border-radius: 12px;
     }
 
     img:hover {
@@ -154,14 +155,93 @@
       pointer-events: none;
       z-index: -1;
     }
+
+    /* ===== THEME TOGGLE BUTTON ===== */
+    #theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      padding: 8px 18px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-family: 'Titillium Web', Verdana, Helvetica, sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+      transition: all 0.3s ease;
+      letter-spacing: 0.5px;
+    }
+
+    #theme-toggle:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+    }
+
+    #theme-toggle::after {
+      display: none;
+    }
+
+    /* ===== DARK THEME ===== */
+    body.dark-theme {
+      color: #c9d1d9;
+    }
+
+    body.dark-theme a {
+      color: #79c0ff;
+    }
+
+    body.dark-theme a:focus,
+    body.dark-theme a:hover {
+      color: #ff7b9c;
+    }
+
+    body.dark-theme table[width="100%"][align="center"] {
+      background: rgba(22, 27, 34, 0.92) !important;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5) !important;
+    }
+
+    body.dark-theme table[width="100%"][align="center"]:hover {
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7) !important;
+    }
+
+    body.dark-theme span.highlight {
+      background-color: #3d3800;
+    }
+
+    body.dark-theme #theme-toggle {
+      background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+      box-shadow: 0 4px 15px rgba(253, 160, 133, 0.4);
+      color: #1a1a2e;
+    }
+
+    body.dark-theme #theme-toggle:hover {
+      box-shadow: 0 6px 20px rgba(253, 160, 133, 0.5);
+    }
   </style>
   <link rel="icon" type="image/png" href="images/brown_logo.png">
   <title>Aashish Rai</title>
   <meta http-equiv="Content-Type" content="text/html; charset=us-ascii">
   <link href="https://fonts.googleapis.com/css?family=Titillium+Web:400,600,400italic,600italic,300,300italic" rel="stylesheet" type="text/css">
+  <script>
+    // Apply saved theme as early as possible to avoid flash
+    (function() {
+      if (localStorage.getItem('theme') === 'light') {
+        document.addEventListener('DOMContentLoaded', function() {
+          document.body.classList.remove('dark-theme');
+          var btn = document.getElementById('theme-toggle');
+          if (btn) btn.textContent = '\uD83C\uDF19 Dark Mode';
+        });
+      }
+    })();
+  </script>
 </head>
 
-<body>
+<body class="dark-theme">
+  <button id="theme-toggle" onclick="toggleTheme()" title="Toggle dark/light mode">&#9728;&#65039; Light Mode</button>
   <table width="70%" border="0" align="center" cellspacing="0" cellpadding="0">
     <tr>
       <td>
@@ -566,6 +646,21 @@ Hey folks from around the globe!! <br>
 </center>									
 									
 									
+  <script>
+    function toggleTheme() {
+      var body = document.body;
+      var btn = document.getElementById('theme-toggle');
+      if (body.classList.contains('dark-theme')) {
+        body.classList.remove('dark-theme');
+        btn.textContent = '\uD83C\uDF19 Dark Mode';
+        localStorage.setItem('theme', 'light');
+      } else {
+        body.classList.add('dark-theme');
+        btn.innerHTML = '&#9728;&#65039; Light Mode';
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+  </script>
 </body>
 
 </html>
